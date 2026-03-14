@@ -36,5 +36,26 @@
  *   rangoli(3) // => ["  *", " * *", "* * *", " * *", "  *"]
  */
 export function rangoli(n) {
-  // Your code here
+  if (typeof n !== 'number' || !Number.isInteger(n) || n < 1) return []
+
+  let result = [];
+  // agar n i se chota he ya baraber he jab tak tab tak yeh loop chalega 
+  for (let i = 1; i <= n; i++) {
+
+    // yeh line spaces ko repeat karegi utni bar jitna n/5 - 1 karna par ayage ;
+    let spaces = ' '.repeat(n - i);
+
+    // yeh line stars ko repeat karegi or array mein split karke join karegi
+    let stars = '*'.repeat(i).split('').join(' ');
+
+    // or yaha result push karwa rahe hen array mein 
+    result.push(spaces + stars);
+  }
+  for (let i = n - 1; i >= 1; i--) {
+    let spaces = ' '.repeat(n - i);
+    let stars = '*'.repeat(i).split('').join(' ');
+    result.push(spaces + stars);
+  }
+  return result
+
 }

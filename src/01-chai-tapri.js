@@ -27,5 +27,20 @@
  *   // => { totalChai: 0, totalRevenue: 0 }
  */
 export function chaiTapriRevenue(customers) {
-  // Your code here
+  if (typeof customers !== 'number' || !Number.isInteger(customers) || customers <=0) return { totalChai: 0, totalRevenue: 0 };
+  let adrakCount = 0;
+  let normalCount = 0;
+  for (var i = 1; i <= customers; i++) {
+    if (i % 3 === 0) {
+      adrakCount += 1
+    } else {
+      normalCount += 1
+    }
+  }
+  const adrakChaiTotal = adrakCount * 15;
+  const cuttingTotal = normalCount * 10;
+  const finalTotal = adrakChaiTotal + cuttingTotal;
+  return { totalChai: customers, totalRevenue: finalTotal };
+
+
 }
